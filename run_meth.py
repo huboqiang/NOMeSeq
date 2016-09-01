@@ -7,7 +7,7 @@ import numpy as np
 from optparse   import OptionParser
 
 import MethGC.frame.module01_mapping_from_raw   as m01
-
+import MethGC.frame.module02_chromatinNetwork2   as m02
 import MethGC.utils.module_create_database  as m_db
 
 def prepare_optparser():
@@ -26,7 +26,7 @@ Suport genome includes:
 Using -h or --help for more information
 
 Example:
-    python %s --ref mm9 --cutSites GCA.GCC.GCT,ACG.TCG samp_test.xls
+    python %s --ref hg19 --cutSites GCA.GCC.GCT,ACG.TCG samp_test.xls
 
     """ % (sys.argv[0],sys.argv[0])
 
@@ -62,14 +62,31 @@ def main():
         prepare_optparser().print_help()
         sys.exit(1)
     
-    part0 = m_db.DataBaseInit(ref, sam_Info, is_debug = 1)
-    part0.check_files(l_cut_sites)
+#    part0 = m_db.DataBaseInit(ref, sam_Info, is_debug = 0)
+#    part0.check_files(l_cut_sites)
     
-    part1 = m01.MapFromRaw(ref, sam_Info, l_cut_sites, is_debug = 1)
+    part1 = m01.MapFromRaw(ref, sam_Info, l_cut_sites, is_debug = 0)
+    Depth_Pos = 3
     part1.s01_Trim()
     part1.s02_Bismark()
     part1.s03_Bam2SingleC()
-    part1.s04_CallNDR()
-    
+    part1.s04_statMeth(Depth_Pos)
+    part1.s05_NDR()
+    part1.s06_merge_singleC()
+    part1.s07_mergeSample(Depth_Pos)
+    part1.s08_plotDist()
+    part1.s09_NDR_IGV()
+    part1.s10_NDR_flanking()
+    part1.s11_NDR_motif()
+
+    Depth_Pos = 1
+    part1.s01_Trim()
+    part1.s02_Bismark()
+    part1.s03_Bam2SingleC()
+    part1.s04_statMeth(Depth_Pos)
+    part1.s05_NDR()
+    part1.s06_merge_singleC()
+    part1.s07_mergeSample(Depth_Pos)
+
 if __name__ == '__main__':
     main()

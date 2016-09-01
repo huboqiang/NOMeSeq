@@ -75,7 +75,6 @@ class UsedSoftware(object):
                 
         self.sftw_trim      = "/data/Analysis/lilin/bin/trim_galore"
         self.sftw_bismark   = "/data/bin/bismark_v0.7.6"
-        self.sftw_changeID  = "/datc/guohongshan/PBAT/scBS/ChangeReadID.pl"
         self.sftw_bowtie_dir= "/data/Analysis/huboqiang/software/bowtie-1.0.0"
         
 
