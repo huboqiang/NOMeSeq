@@ -1,4 +1,4 @@
-A pipeline which could processing from raw fastq reads to FPKM value and unique counts for each gene/repeat elements, RNA quantification using ERCC molecules and for basic statistics for mapping.
+A pipeline which could processing from raw fastq reads to result of NORM-seq for both DNA methylation(WCG) and the accessibility of DNA (GCH).
 
 First, before this pipeline in a server, make sure the required modules were installed. If not, running the following scripts for deploying.
 ```bash
