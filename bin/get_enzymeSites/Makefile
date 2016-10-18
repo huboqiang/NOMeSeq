@@ -1,4 +1,4 @@
-UTILITIES_DIR = /data/Analysis/huboqiang/software/bedtools-2.17.0/src/utils/
+UTILITIES_DIR = ./#/datd/huboqiang/software/install_packages/bedtools2/src/utils/
 OBJ_DIR = ./
 BIN_DIR = ./
 
