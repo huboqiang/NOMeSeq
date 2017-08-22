@@ -1,6 +1,9 @@
 A pipeline which could processing from raw fastq reads to result of NORM-seq for both DNA methylation(WCG) and the accessibility of DNA (GCH).
 
 First, before this pipeline in a server, make sure the required modules were installed. If not, running the following scripts for deploying.
+
+Remember, DO USE the **right version** of the software listed below, or some bugs would be introduced.
+
 ```bash
 mkdir install_packages
 
@@ -49,6 +52,15 @@ mv bedtools-2.24.0.tar.gz install_packages
 
 ### install HTSeq
 pip install HTSeq
+
+###install tabix and pytabix
+wget http://sourceforge.net/projects/samtools/files/tabix/tabix-0.2.6.tar.bz2
+tar -jxvf tabix-0.2.6.tar.bz2
+cd tabix-0.2.6
+make
+cd ..
+mv tabix-0.2.6.tar.bz2 install_packages
+pip install pytabix
 ```
 
 After that, download this script:
